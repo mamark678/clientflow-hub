@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClientFlow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>ClientFlow</h1>
+      <button class="add-client-btn" id="addClientBtn">+ New Client</button>
+    </div>
+
+    <div class="client-list" id="clientList">
+      <!-- Clients will appear here -->
+    </div>
+
+    <!-- Add/Edit Client Form -->
+    <div class="client-form-overlay" id="clientFormOverlay" style="display: none;">
+      <div class="client-form">
+        <h2>Add Client</h2>
+
+        <div class="form-group">
+          <label>Client Name</label>
+          <input type="text" id="clientName" placeholder="e.g. Acme Corp">
+        </div>
+
+        <div class="form-group">
+          <label>Color Code</label>
+          <div class="color-picker" id="colorPicker">
+            <button class="color-btn selected" data-color="#3b82f6" style="background: #3b82f6;"></button>
+            <button class="color-btn" data-color="#ef4444" style="background: #ef4444;"></button>
+            <button class="color-btn" data-color="#10b981" style="background: #10b981;"></button>
+            <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b;"></button>
+            <button class="color-btn" data-color="#8b5cf6" style="background: #8b5cf6;"></button>
+            <button class="color-btn" data-color="#ec4899" style="background: #ec4899;"></button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Auto-detect Account Index</label>
+          <input type="text" id="googleUrlPaste" placeholder="Paste a Google Drive/Mail URL here...">
+          <small class="hint" id="urlPasteHint">e.g. https://drive.google.com/drive/u/1/...</small>
+        </div>
+
+        <div class="form-group">
+          <label>Google Account Index (0, 1, 2...)</label>
+          <input type="number" id="googleAccountIndex" min="0" placeholder="e.g. 0, 1, 2">
+          <small class="hint">Auto-switches Gmail/Drive accounts (u/1, u/2)</small>
+        </div>
+
+        <div class="form-group">
+          <label>Tools & URLs</label>
+          <div id="toolsList" class="tools-list">
+            <!-- Tool items added here -->
+          </div>
+          <button type="button" id="addToolBtn" class="secondary-btn">+ Add Tool</button>
+        </div>
+
+        <div class="form-buttons">
+          <button id="saveClientBtn" class="primary-btn">Save Client</button>
+          <button id="cancelBtn" class="text-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- Auth Prompt (shown if not authenticated) -->
+  <div class="auth-prompt" id="authPrompt" style="display: none;">
+    <h2>Welcome to ClientFlow</h2>
+    <p>Please sign in to sync your clients across devices.</p>
+    <input type="email" id="authEmail" placeholder="Email">
+    <input type="password" id="authPassword" placeholder="Password">
+    <button id="signInBtn" class="primary-btn">Sign In</button>
+    <button id="signUpBtn" class="secondary-btn">Sign Up</button>
+    <p class="auth-error" id="authError" style="display: none;"></p>
+  </div>
+  </div>
+
+  <!-- Load Supabase from CDN first -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="popup.js"></script>
+
+</body>
+
+</html>

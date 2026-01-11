@@ -1,11 +1,11 @@
-import { Helmet } from "react-helmet-async";
-import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import EmailCaptureModal from "@/components/EmailCaptureModal";
-import { Chrome, Download as DownloadIcon, Settings, Zap, HelpCircle } from "lucide-react";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Chrome, Download as DownloadIcon, HelpCircle, Settings, Zap } from "lucide-react";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const steps = [
   {
@@ -31,7 +31,7 @@ const steps = [
 const faqs = [
   {
     question: "Which browsers does ClientFlow support?",
-    answer: "ClientFlow is currently available for Google Chrome. We're working on Firefox and Edge versions and plan to release them soon.",
+    answer: "ClientFlow is currently available for Edge. I am working on other browser versions and plan to release them soon.",
   },
   {
     question: "Is my data secure?",
@@ -87,7 +87,7 @@ const DownloadPage = () => {
               onClick={() => window.open("https://chrome.google.com/webstore", "_blank")}
             >
               <Chrome className="w-6 h-6" />
-              Add to Chrome — It's Free
+              Add to Browser — It's Free
             </Button>
           </div>
         </section>

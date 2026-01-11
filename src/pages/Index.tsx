@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import Navbar from "@/components/Navbar";
+import CommentsSection from "@/components/CommentsSection";
+import CTASection from "@/components/CTASection";
+import DemoSection from "@/components/DemoSection";
+import EmailCaptureModal from "@/components/EmailCaptureModal";
+import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import Navbar from "@/components/Navbar";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
-import DemoSection from "@/components/DemoSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
-import EmailCaptureModal from "@/components/EmailCaptureModal";
+import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,7 +36,7 @@ const Index = () => {
         <ProblemSection />
         <SolutionSection />
         <DemoSection />
-        <TestimonialsSection />
+        <CommentsSection />
         <CTASection />
         <Footer />
         <EmailCaptureModal
