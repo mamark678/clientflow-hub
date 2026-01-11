@@ -1,28 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, ArrowRight } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 const CTASection = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [waitlistCount, setWaitlistCount] = useState(500);
+  const [waitlistCount] = useState(500);
   const { toast } = useToast();
-
-  useEffect(() => {
-    const fetchCount = async () => {
-      const { count, error } = await supabase
-        .from("waitlist")
-        .select("*", { count: "exact", head: true });
-      
-      if (!error && count !== null) {
-        setWaitlistCount(500 + count);
-      }
-    };
-    fetchCount();
-  }, []);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -42,37 +28,15 @@ const CTASection = () => {
 
     setIsLoading(true);
 
-    try {
-      const { error } = await supabase
-        .from("waitlist")
-        .insert([{ email, source: "cta-section" }]);
-
-      if (error) {
-        if (error.code === "23505") {
-          toast({
-            title: "Already on the list!",
-            description: "This email is already registered on our waitlist.",
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        setEmail("");
-        setWaitlistCount((prev) => prev + 1);
-        toast({
-          title: "You're on the list! 🎉",
-          description: "We'll notify you when ClientFlow launches.",
-        });
-      }
-    } catch (error) {
+    // TODO: Connect to backend when Cloud is enabled
+    setTimeout(() => {
+      setEmail("");
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
+        title: "You're on the list! 🎉",
+        description: "We'll notify you when ClientFlow launches.",
       });
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   return (

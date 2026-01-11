@@ -4,13 +4,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EmailCaptureModal from "@/components/EmailCaptureModal";
-import { Chrome, Download, Settings, Zap, HelpCircle } from "lucide-react";
+import { Chrome, Download as DownloadIcon, Settings, Zap, HelpCircle } from "lucide-react";
 import { useState } from "react";
 
 const steps = [
   {
     number: 1,
-    icon: Download,
+    icon: DownloadIcon,
     title: "Click 'Add to Chrome'",
     description: "Click the button below to open the Chrome Web Store and add ClientFlow to your browser.",
   },
@@ -51,7 +51,7 @@ const faqs = [
   },
 ];
 
-const Download = () => {
+const DownloadPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -211,4 +211,4 @@ const Download = () => {
   );
 };
 
-export default Download;
+export default DownloadPage;

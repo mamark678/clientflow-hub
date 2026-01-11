@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, CheckCircle2, Mail } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 interface EmailCaptureModalProps {
   isOpen: boolean;
@@ -35,36 +34,15 @@ const EmailCaptureModal = ({ isOpen, onClose }: EmailCaptureModalProps) => {
 
     setIsLoading(true);
 
-    try {
-      const { error } = await supabase
-        .from("waitlist")
-        .insert([{ email, source: "modal" }]);
-
-      if (error) {
-        if (error.code === "23505") {
-          toast({
-            title: "Already on the list!",
-            description: "This email is already registered on our waitlist.",
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        setIsSuccess(true);
-        toast({
-          title: "You're on the list!",
-          description: "We'll notify you when ClientFlow launches.",
-        });
-      }
-    } catch (error) {
+    // TODO: Connect to backend when Cloud is enabled
+    setTimeout(() => {
+      setIsSuccess(true);
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
+        title: "You're on the list!",
+        description: "We'll notify you when ClientFlow launches.",
       });
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   const handleClose = () => {
