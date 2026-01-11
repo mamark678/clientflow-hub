@@ -1,10 +1,8 @@
-import EmailCaptureModal from "@/components/EmailCaptureModal";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Chrome, Download as DownloadIcon, HelpCircle, Settings, Zap } from "lucide-react";
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const steps = [
@@ -52,8 +50,6 @@ const faqs = [
 ];
 
 const DownloadPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <>
       <Helmet>
@@ -65,7 +61,7 @@ const DownloadPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        <Navbar onOpenWaitlist={() => setIsModalOpen(true)} />
+        <Navbar />
 
         {/* Hero */}
         <section className="pt-32 pb-16 px-4 gradient-hero">
@@ -202,10 +198,6 @@ const DownloadPage = () => {
         </section>
 
         <Footer />
-        <EmailCaptureModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
       </div>
     </>
   );

@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, CheckCircle2, Mail } from "lucide-react";
+import { CheckCircle2, Mail } from "lucide-react";
+import { useState } from "react";
 
 interface EmailCaptureModalProps {
   isOpen: boolean;
@@ -22,7 +22,7 @@ const EmailCaptureModal = ({ isOpen, onClose }: EmailCaptureModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateEmail(email)) {
       toast({
         title: "Invalid email",
@@ -96,14 +96,6 @@ const EmailCaptureModal = ({ isOpen, onClose }: EmailCaptureModalProps) => {
                 size="lg"
                 disabled={isLoading}
               >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Joining...
-                  </>
-                ) : (
-                  "Join Waitlist"
-                )}
               </Button>
             </form>
             <p className="text-xs text-muted-foreground text-center mt-4">

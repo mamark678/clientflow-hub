@@ -10,7 +10,7 @@ const Terms = () => {
                 <meta name="description" content="Terms of Service for ClientFlow" />
             </Helmet>
             <div className="min-h-screen bg-background flex flex-col">
-                <Navbar onOpenWaitlist={() => { }} />
+                <Navbar />
                 <main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
                     <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
                     <div className="prose dark:prose-invert max-w-none space-y-6">

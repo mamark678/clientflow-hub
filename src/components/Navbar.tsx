@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Zap } from "lucide-react";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-interface NavbarProps {
-  onOpenWaitlist: () => void;
-}
+interface NavbarProps { }
 
-const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
+const Navbar = ({ }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -45,13 +43,12 @@ const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
                 key={item.label}
                 to={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  item.comingSoon
+                className={`text-sm font-medium transition-colors duration-200 ${item.comingSoon
                     ? "text-muted-foreground cursor-not-allowed"
                     : location.pathname === item.href
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {item.label}
                 {item.comingSoon && (
@@ -65,9 +62,11 @@ const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button variant="hero" size="sm" onClick={onOpenWaitlist}>
-              Join Waitlist
-            </Button>
+            <Link to="/download">
+              <Button variant="hero" size="sm">
+                Download Noow
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,11 +88,10 @@ const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
                   key={item.label}
                   to={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`text-sm font-medium py-2 ${
-                    item.comingSoon
+                  className={`text-sm font-medium py-2 ${item.comingSoon
                       ? "text-muted-foreground"
                       : "text-foreground"
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {item.comingSoon && (
@@ -103,9 +101,11 @@ const Navbar = ({ onOpenWaitlist }: NavbarProps) => {
                   )}
                 </Link>
               ))}
-              <Button variant="hero" onClick={onOpenWaitlist} className="mt-2">
-                Join Waitlist
-              </Button>
+              <Link to="/download">
+                <Button variant="hero" className="mt-2 w-full">
+                  Download Now
+                </Button>
+              </Link>
             </div>
           </div>
         )}

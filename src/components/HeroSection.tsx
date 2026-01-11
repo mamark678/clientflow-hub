@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight } from "lucide-react";
+import { Download, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
-interface HeroSectionProps {
-  onOpenWaitlist: () => void;
-}
+interface HeroSectionProps { }
 
-const HeroSection = ({ onOpenWaitlist }: HeroSectionProps) => {
+const HeroSection = ({ }: HeroSectionProps) => {
   const scrollToDemo = () => {
     document.querySelector("#demo")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -25,7 +24,7 @@ const HeroSection = ({ onOpenWaitlist }: HeroSectionProps) => {
             <div className="inline-flex items-center gap-2 bg-accent px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               <span className="text-sm font-medium text-accent-foreground">
-                Now in private beta
+                Now Available for Edge
               </span>
             </div>
 
@@ -40,12 +39,14 @@ const HeroSection = ({ onOpenWaitlist }: HeroSectionProps) => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="lg" onClick={onOpenWaitlist}>
-                Join Waitlist
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+              <Link to="/download">
+                <Button variant="hero" size="lg">
+                  Download Extension
+                  <Download className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
               <Button variant="heroOutline" size="lg" onClick={scrollToDemo}>
-                <Play className="w-5 h-5" />
+                <Play className="w-5 h-5 mr-2" />
                 Watch Demo
               </Button>
             </div>
@@ -79,11 +80,10 @@ const HeroSection = ({ onOpenWaitlist }: HeroSectionProps) => {
                   ].map((client, i) => (
                     <div
                       key={i}
-                      className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
-                        client.active
+                      className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${client.active
                           ? "border-primary bg-accent"
                           : "border-border hover:border-primary/50"
-                      }`}
+                        }`}
                     >
                       <div
                         className={`w-10 h-10 rounded-lg ${client.color} flex items-center justify-center text-white font-bold`}
